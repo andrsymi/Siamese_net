@@ -232,8 +232,9 @@ class SiameseNetwork:
         :param y: Integer class labels
         :return: Python list of lists
         """
-        num_classes = np.max(y) + 1
-        return [np.where(y == i)[0] for i in range(num_classes)], num_classes
+        # num_classes = np.max(y) + 1
+        num_classes = y.shape[1]
+        return [np.where(y[:, i] == 1) for i in range(num_classes)], num_classes
 
     @staticmethod
     def __randint_unequal(lower, upper):
